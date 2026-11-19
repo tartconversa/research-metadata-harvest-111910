@@ -1,0 +1,27 @@
+{
+  "subscriptions": [
+    {
+      "team": "transfer-a",
+      "repository": "university-a",
+      "sets": [
+        "robot",
+        "compute"
+      ]
+    },
+    {
+      "team": "transfer-b",
+      "repository": "university-a",
+      "sets": [
+        "compute"
+      ]
+    },
+    {
+      "team": "transfer-a",
+      "repository": "university-b",
+      "sets": [
+        "robot"
+      ]
+    }
+  ],
+  "metadata_prefix": "oai_dc"
+}

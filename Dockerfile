@@ -3,6 +3,7 @@ WORKDIR /workspace
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY source ./source
+COPY harvest ./harvest
 COPY tests ./tests
 COPY inputs ./inputs
 COPY docs ./docs

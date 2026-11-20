@@ -14,3 +14,7 @@ __pycache__/
 # 本地演练来源状态
 source-state.json
 *.state.json
+
+# 采集端本地数据库
+harvest.db
+*.harvest.db

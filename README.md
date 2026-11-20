@@ -15,3 +15,17 @@
 ## 检查
 
 运行 python -m unittest discover -s tests -v 检查来源端、原件、门户状态和合成接收端本身。涉及页面的数据源测试会启动真实Chromium。它不验证任何尚未编写的采集程序，也不代表采集业务验收已经通过。
+
+## 采集端
+
+harvest/ 是元数据采集端，通过真实 OAI-PMH / 详情 / 原件协议请求维护按团队订阅范围可查询的成果清单与引用状态。先启动来源服务，再执行：
+
+    python -m harvest.cli --db harvest.db init --config inputs/request.json   # 初次采集
+    python -m harvest.cli --db harvest.db run [--mode auto|full|incremental] # 日常接续
+    python -m harvest.cli --db harvest.db subscribe|unsubscribe --team 团队 --repo university-a --set robot
+    python -m harvest.cli --db harvest.db list --team transfer-a             # 订阅范围清单
+    python -m harvest.cli --db harvest.db cite --team transfer-a --identifier oai:university-a:1
+    python -m harvest.cli --db harvest.db citation-status --id 1             # 引用状态查询
+    python -m harvest.cli --db harvest.db coverage                           # 覆盖证明
+
+事实链、覆盖证明、标识关联与引用失效的设计见 docs/receiver-design.md；端到端验证（续传失效、集合交叉、同日更正、撤回等）在 tests/test_harvest.py。
